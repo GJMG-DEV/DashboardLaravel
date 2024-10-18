@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\CrearTipoDocumentario;
+use App\Livewire\CrearUnidad;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/tipo-documento', CrearTipoDocumentario::class)->name('tipoDocumento');
+Route::get('/unidad', CrearUnidad::class)->name('unidad');
