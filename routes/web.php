@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\CrearTipoDocumentario;
 use App\Livewire\CrearUnidad;
+use App\Http\Controllers\Admin\TipoDocumento;
 
 
 /*
@@ -19,5 +20,5 @@ use App\Livewire\CrearUnidad;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/tipo-documento', CrearTipoDocumentario::class)->name('tipoDocumento');
+Route::get('/tipo-documento', [TipoDocumento::class,'index'])->name('tipoDocumento');
 Route::get('/unidad', CrearUnidad::class)->name('unidad');

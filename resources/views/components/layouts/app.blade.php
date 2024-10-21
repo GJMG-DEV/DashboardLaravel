@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ $title ?? 'Seguimeinto de Documento | Municipalidad Distrital de San Clemente' }}</title>
+
         @livewireStyles
+
     </head>
     <body>
         {{ $slot }}
