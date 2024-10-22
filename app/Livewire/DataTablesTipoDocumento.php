@@ -4,21 +4,35 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\TipoDocumento;
-use Livewire\WithoutUrlPagination;
+
 use Livewire\WithPagination;
 class DataTablesTipoDocumento extends Component
 {
-    use WithPagination,WithoutUrlPagination;
+    use WithPagination;
 
+    public $search = '';
+
+
+    protected $listeners = ['deleteTipoDocumento' => 'delete'];
     public function edit($id)
     {
         $this->dispatch('editTipoDocumento', id: $id);
     }
+    public function delete($id)
+    {
+        TipoDocumento::find($id)->delete();
+        session()->flash('status', 'Tipo de documento eliminado exitosamente.');
 
+    }
     public function render()
     {
+         // Filtrar los tipos de documento por el término de búsqueda
+         $tipoDocumento = TipoDocumento::where('nombre', 'like', '%' . $this->search . '%')
+         ->orWhere('abreviatura', 'like', '%' . $this->search . '%')
+         ->paginate(2);
+
         return view('livewire.data-tables-tipo-documento', [
-            'tipoDocumento' => TipoDocumento::paginate(2), // Cambia 10 por el número de registros por página que desees
+        'tipoDocumento' => $tipoDocumento,
         ]);
     }
 }

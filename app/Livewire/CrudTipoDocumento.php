@@ -30,6 +30,7 @@ class CrudTipoDocumento extends Component
     public function closeModal()
     {
         $this->modal = false;
+        $this->resetValidation();
 
     }
 
@@ -58,9 +59,9 @@ class CrudTipoDocumento extends Component
             ]);
         }
         $this->resetFields();
+        session()->flash('status', 'Tipo de documento registrado de manera correcta');
         return $this->redirect('/tipo-documento');
     }
-
 
 
     public function edit($id)

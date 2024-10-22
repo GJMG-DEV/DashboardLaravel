@@ -8,11 +8,11 @@
 
         @livewireStyles
 
+
     </head>
     <body>
         {{ $slot }}
     </body>
-
     @livewireScripts
 
 </html>
