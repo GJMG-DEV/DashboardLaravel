@@ -15,7 +15,7 @@
                         <form class="">
                             <div class="form-group">
                                 <div class="input-icon">
-                                    <input type="text" class="form-control" placeholder="..." wire:model="search" />
+                                    <input type="text" class="form-control" placeholder="..."  wire:model.live="search" />
                                   <span class="input-icon-addon">
                                     <i class="fa fa-search"></i>
                                   </span>
@@ -56,6 +56,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -63,6 +64,11 @@
 
         </div>
     </div>
-    {{ $tipoDocumento->links('pagination::bootstrap-4') }} <!-- Usar paginación de Bootstrap -->
+    <div class="mt-3">
+        {{ $tipoDocumento->links('pagination::bootstrap-4') }} <!-- Usar paginación de Bootstrap -->
+    </div>
+    <div>
+        <span>Página {{ $tipoDocumento->currentPage() }} de {{ $tipoDocumento->lastPage() }}</span>
+    </div>
 </div>
 
