@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tableTipoDocumento" class="display table table-striped table-hover">
+                        <table id="tableUnidad" class="display table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Tipo Documento</th>
@@ -45,13 +45,13 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($tipoDocumento as $value)
+                                @foreach ($unidad as $value)
                                     <tr wire:key="documento-{{ $value->id }}">
                                         <th>{{$value->nombre}}</th>
                                         <th>{{$value->abreviatura}}</th>
                                         <th>
                                             <button class="btn btn-success" wire:click="edit({{ $value->id }})">Editar</button> |
-                                            <button class="btn btn-danger" onclick="deleteTipoDocumento({{$value->id}})">Eliminar</button>
+                                            <button class="btn btn-danger" onclick="deleteUnidad({{$value->id}})">Eliminar</button>
                                         </th>
                                     </tr>
                                 @endforeach
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="mt-3">
-        {{ $tipoDocumento->links('') }} <!-- Usar paginación de Bootstrap -->
+        {{ $unidad->links('') }} <!-- Usar paginación de Bootstrap -->
 
     </div>
 

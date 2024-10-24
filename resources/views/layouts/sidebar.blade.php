@@ -79,14 +79,14 @@
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
                   <i class="fas fa-th-list"></i>
-                  <p>Sidebar Layouts</p>
+                  <p>Mantenimiento</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="sidebarLayouts">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-2.html">
-                        <span class="sub-item">Sidebar Style 2</span>
+                      <a href="{{route('tramiteDocumentario')}}">
+                        <span class="sub-item">Tramite Documentario</span>
                       </a>
                     </li>
                     <li>

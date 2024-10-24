@@ -4,23 +4,26 @@ namespace App\Livewire;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use App\Models\TipoDocumento;
-
 use Livewire\WithPagination;
+use Livewire\Attributes\Reactive;
+use Livewire\WithoutUrlPagination;
 class DataTablesTipoDocumento extends Component
 {
-    use WithPagination;
-    #[Url(history: true)]
+    use WithPagination,WithoutUrlPagination;
+    //#[Url(history: true)] // Mantiene la búsqueda sincronizada con la URL
     public $search = '';
-
+    public $pagina = 10; // Establecer el número de elementos por página
 
     protected $listeners = ['deleteTipoDocumento' => 'delete'];
-    public function mount()
-    {
-        $this->search = ''; // Inicializa el valor de búsqueda
-    }
+
+
     public function edit($id)
     {
         $this->dispatch('editTipoDocumento', id: $id);
+    }
+    public function search()
+    {
+        $this->resetPage();
     }
     public function delete($id)
     {
@@ -28,20 +31,19 @@ class DataTablesTipoDocumento extends Component
         session()->flash('status', 'Tipo de documento eliminado exitosamente.');
 
     }
-     // Escuchar cambios en el campo de búsqueda y resetear la página
-     public function updatedSearch()
-     {
-         $this->resetPage(); // Resetea a la primera página cuando se cambia la búsqueda
-         // Asegúrate de empezar en la primera página
-     }
+    public function updatedSearch($value)
+    {
+        session(['search' => $value]); // Guardar búsqueda en la sesión
+        $this->resetPage(); // Resetea la página cuando cambia la búsqueda
+    }
     public function render()
     {
-        $tipoDocumento = TipoDocumento::where('nombre', 'like', '%' . $this->search . '%')
-        ->orWhere('abreviatura', 'like', '%' . $this->search . '%')
-        ->paginate(4); // Número de registros por página
 
         return view('livewire.data-tables-tipo-documento', [
-            'tipoDocumento' => $tipoDocumento,
+            'tipoDocumento' => TipoDocumento::where('nombre', 'like', '%' . $this->search . '%')->paginate($this->pagina),
         ]);
+
+
+
     }
 }
