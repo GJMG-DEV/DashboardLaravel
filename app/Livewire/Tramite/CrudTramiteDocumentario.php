@@ -3,10 +3,15 @@
 namespace App\Livewire\Tramite;
 
 use Livewire\Component;
-
+use App\Models\TipoDocumento;
 class CrudTramiteDocumentario extends Component
 {
     public $modal=false;
+    public $tipoDocumentos;
+    public function mount(){
+
+        $this->tipoDocumentos=TipoDocumento::all();
+    }
     public function openModal(){
         $this->modal=true;
     }

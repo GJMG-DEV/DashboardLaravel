@@ -13,6 +13,7 @@
          <div class="modal-content">
              <div class="modal-header">
                  {{-- <h5 class="modal-title">{{ $nombre ? 'Editar Unidad' : 'Crear Unidad' }}</h5> --}}
+                 <h5>TRAMITE DOCUMENTARIO</h5>
                  <button wire:click="closeModal()" type="button" class="btn-close"></button>
              </div>
              <div class="modal-body">
@@ -26,10 +27,10 @@
                             <di class="col-md-4">
                                 <label  class="form-label">Tipo de Expediente</label>
                                 <select class="form-select form-control-lg" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>Selecciona...</option>
+                                    @foreach ($tipoDocumentos as $value)
+                                        <option value="{{$value->id}}">{{$value->nombre}}</option>
+                                    @endforeach
                                   </select>
                             </di>
                             <di class="col-md-4">
