@@ -22,37 +22,43 @@
                         <div class="row">
                             <di class="col-md-4">
                                 <label  class="form-label">Ingrese Fecha:</label>
-                                <input type="date" class="form-control"  placeholder="date">
+                                <input type="date" class="form-control"  placeholder="date" wire:model='fechaIngreso'>
+                                @error('fechaIngreso') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
                             <di class="col-md-4">
                                 <label  class="form-label">Tipo de Expediente</label>
-                                <select class="form-select form-control-lg" aria-label="Default select example">
+                                <select class="form-select form-control-lg" aria-label="Default select example" wire:model='idTipoDocumento'>
                                     <option selected>Selecciona...</option>
                                     @foreach ($tipoDocumentos as $value)
                                         <option value="{{$value->id}}">{{$value->nombre}}</option>
                                     @endforeach
                                   </select>
+                                  @error('idTipoDocumento') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
                             <di class="col-md-4">
-                                <label  class="form-label">Numero de Documento:</label>
-                                <input type="number" class="form-control"  placeholder="1520">
+                                <label  class="form-label">N° de Documento y/o Expediente:</label>
+                                <input type="number" class="form-control"  placeholder="1520" wire:model='numeroDocumento'>
+                                @error('numeroDocumento') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
 
                         </div>
                         <div class="row mt-2">
                             <di class="col-md-8">
                                 <label  class="form-label">Nombre del Remitente::</label>
-                                <input type="text" class="form-control"  placeholder="">
+                                <input type="text" class="form-control"  placeholder="" wire:model='nombreRemitente'>
+                                @error('nombreRemitente') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
                             <di class="col-md-4">
                                 <label  class="form-label">Folios:</label>
-                                <input type="number" class="form-control"  placeholder="03">
+                                <input type="number" class="form-control"  placeholder="03" wire:model='folios'>
+                                @error('folios') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
                         </di>
                         <div class="row mt-2">
                             <di class="col-md-12">
                                 <label  class="form-label">Asunto::</label>
-                                <textarea name="" id="" cols="40" rows="10" class="form-control"></textarea>
+                                <textarea name="" id="" cols="40" rows="10" class="form-control" wire:model='asunto'></textarea>
+                                @error('asunto') <span class="text-danger">{{ $message }}*</span> @enderror
                             </di>
                         </div>
 

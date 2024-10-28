@@ -8,10 +8,14 @@ use App\Models\TipoDocumento;
 class TramiteDocumentario extends Model
 {
     use HasFactory;
-    protected $guarded=['id','createt_at','updatet_at'];
+    protected $guarded=['id','created_at','updated_at'];
     protected $table='tramite_documentario';
     public function tipoDocumento()
     {
-        return $this->belongsTo(TipoDocumento::class, 'tipo_documento_id');
+        return $this->belongsTo(TipoDocumento::class, 'idTipoDocumento');
     }
+    public function historialTramite()
+{
+    return $this->hasMany(HistorialTramite::class, 'tramite_documentario_id');
+}
 }
