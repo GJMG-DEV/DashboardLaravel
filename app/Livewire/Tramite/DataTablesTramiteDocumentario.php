@@ -36,6 +36,10 @@ class DataTablesTramiteDocumentario extends Component
                 'fecha_derivacion' => now(),
             ]);
 
+            $tramite->update([
+               'estado'=>2
+            ]);
+
             session()->flash('message', 'Trámite derivado exitosamente.');
         } else {
             session()->flash('error', 'No se encontró el trámite o la unidad.');
@@ -45,6 +49,7 @@ class DataTablesTramiteDocumentario extends Component
     {
         $tramiteDocumentario = TramiteDocumentario::with('tipoDocumento') // Eager loading
             ->where('numeroDocumento', 'like', '%' . $this->search . '%')
+            ->where('estado', 1)
             ->paginate($this->pagina);
             return view('livewire.tramite.data-tables-tramite-documentario', compact('tramiteDocumentario'));
     }

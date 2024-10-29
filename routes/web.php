@@ -6,6 +6,7 @@ use App\Livewire\CrearUnidad;
 use App\Http\Controllers\Admin\TipoDocumento;
 use App\Http\Controllers\Admin\Unidad;
 use App\Http\Controllers\Admin\TramiteDocumentario;
+use App\Http\Controllers\Admin\SeguimientoTramite;
 
 
 /*
@@ -24,5 +25,6 @@ Route::get('/', function () {
 });
 Route::get('/tipo-documento', [TipoDocumento::class,'index'])->name('tipoDocumento');
 Route::get('/tramite-documentario', [TramiteDocumentario::class,'index'])->name('tramiteDocumentario');
+Route::get('/seguimiento-tramite', [SeguimientoTramite::class,'index'])->name('seguimientoTramite');
 Route::get('/unidad', [Unidad::class,'index'])->name('unidad');
 

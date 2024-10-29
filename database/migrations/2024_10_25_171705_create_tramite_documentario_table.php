@@ -22,6 +22,7 @@ return new class extends Migration
             ->constrained(table:'tipo_documento', indexName:'idTipoDocumento')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->enum('estado',[1,2])->default(1);
             $table->timestamps();
         });
     }

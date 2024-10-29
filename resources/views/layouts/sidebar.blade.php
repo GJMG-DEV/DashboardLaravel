@@ -90,8 +90,8 @@
                       </a>
                     </li>
                     <li>
-                      <a href="icon-menu.html">
-                        <span class="sub-item">Icon Menu</span>
+                      <a href="{{route('seguimientoTramite')}}">
+                        <span class="sub-item">Seguimiento de Tramite</span>
                       </a>
                     </li>
                   </ul>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('tramite_documentario_id')->constrained('tramite_documentario')->onDelete('cascade');
             $table->foreignId('unidad_id')->constrained('unidad')->onDelete('cascade');
             $table->timestamp('fecha_derivacion')->useCurrent(); // Fecha de derivación
+
             $table->timestamps();
         });
     }
