@@ -10,4 +10,9 @@ class Unidad extends Model
     use HasFactory;
     protected $guarded=['id','createt_at','updatet_at'];
     protected $table='unidad';
+
+    public function historialTramites()
+    {
+        return $this->hasMany(HistorialTramite::class);
+    }
 }
